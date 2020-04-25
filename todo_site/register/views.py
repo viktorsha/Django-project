@@ -7,7 +7,7 @@ def register(response):
         form = UserCreationForm(response.POST)
         if form.is_valid():
             form.save()
-        return redirect("/startpage")
+        return redirect("/home")
     else:   
         form = UserCreationForm()
     return render(response, "register.html", {"form": form})
