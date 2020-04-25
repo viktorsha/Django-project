@@ -129,4 +129,5 @@ STATICFILES_DIRS = [
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-LOGIN_REDIRECT_URL = "/" # add url of your own cabinet here
+LOGIN_REDIRECT_URL = "/home" # add url of your own cabinet here
+LOGOUT_REDIRECT_URL = "/home" # add url of your own cabinet here

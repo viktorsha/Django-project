@@ -11,3 +11,5 @@ def register(response):
     else:   
         form = UserCreationForm()
     return render(response, "register.html", {"form": form})
+
+# fix bug: if you have registered, you are still an anonimous user and cannot create new lists
