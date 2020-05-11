@@ -10,7 +10,6 @@ def index(response, id):
     if ls in response.user.todolist.all():
         # {"save":["save"], "c1": ["clicked"]}
         if response.method == "POST":
-            print(response.POST)
             if response.POST.get("save"):
                 for item in ls.item_set.all():
                     if response.POST.get("c" + str(item.id)) == "clicked":
@@ -20,15 +19,18 @@ def index(response, id):
                     item.save()
             elif response.POST.get("NewItem"):
                 txt = response.POST.get("new")
-                if len(txt)>2:
+                if len(txt) > 2:
                     ls.item_set.create(text=txt, complete=False)
                 else:
                     print("Invalid")
         return render(response, "main/list.html", {"ls":ls}) #displaying everything using dictionary
     return render(response, "main/view.html", {}) 
 
-def home(response):
-    return render(response, "main/home.html", {})
+def home(request):
+    if request.user.is_authenticated:
+        return render(request, "main/home.html", {})
+    else:
+        return render(request, "main/startpage.html", {})
 
 def create(response): 
     if response.method == "POST":
