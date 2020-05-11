@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views 
+from django.http import HttpResponse
 
 urlpatterns = [
     path("<int:id>", views.index, name="index"),

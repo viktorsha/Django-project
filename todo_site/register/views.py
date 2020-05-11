@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponse
 # Create your views here.
+
 def register(response):
     if response.method == "POST":
         form = UserCreationForm(response.POST)
@@ -12,4 +14,3 @@ def register(response):
         form = UserCreationForm()
     return render(response, "register.html", {"form": form})
 
-# fix bug: if you have registered, you are still an anonimous user and cannot create new lists
